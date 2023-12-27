@@ -1,0 +1,11 @@
+.container {
+  height: 42px;
+  padding: 4px 16px;
+  background-color: #696969;
+
+  font-family: Saira Stencil One;
+  font-size: 24px;
+  line-height: 37.78px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
