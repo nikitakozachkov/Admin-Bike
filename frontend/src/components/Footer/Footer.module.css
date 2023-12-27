@@ -1,0 +1,15 @@
+.container {
+  flex-shrink: 0;
+  height: 42px;
+  padding: 5.5px 10px;
+  background-color: #696969;
+
+  font-size: 20px;
+  line-height: 31.48px;
+  text-align: right;
+  color: #FFFFFF;
+}
+
+.container span {
+  color: #CBCACA;
+}
