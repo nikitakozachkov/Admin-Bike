@@ -1,3 +1,5 @@
+To run commands you need to open the frontend directory
+
 ### `npm start`
 
 Runs the app in the development mode.
