@@ -4,11 +4,100 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+/* 
+  bg-primary: #696969;
+  bg-secondary: #E8E8E8;
+
+  logo: #E8E8E8;
+  footer: #CBCACA;
+
+  text: #000000;
+  text-primary: #333333;
+  text-secondary: #717171;
+
+  aviable: #6FCF97;
+  unaviable: #EB5757;
+  busy: #F2994A;
+
+  unaviable list items have 50% opacity
+*/
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background-color: #ffffff;
+
+  font-family: Saira, sans-serif;
+  font-size: 14px;
+  color: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+
+  font-family: inherit;
+}
+
+input {
+  -webkit-box-shadow: inset 0 0 0 50px #E8E8E8;
+  -webkit-text-fill-color: #000;
+}
+
+input,
+select {
+  font-family: inherit;
+}
+
+input,
+textarea {
+  border: 0;
+  outline: 0;
+}
+
+textarea {
+  padding: 0;
+  resize: none;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.wrapper {
+  flex-grow: 1;
+  display: flex;
+}
+
+.main {
+  width: 60%;
+  max-height: calc(100vh - 84px);
+  overflow-x: auto;
+  padding: 9px 9px 9px 12px;
+  border-right: 1px solid #c4c4c4;
+}
+
+.sidebar {
+  width: 40%;
+  padding-left: 10px;
 }
