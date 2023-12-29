@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:4000/api";
+axios.defaults.baseURL = "https://fierce-wave-09964-fa5f141dbbdb.herokuapp.com/api";
 
 export async function getBikes() {
   const { data } = await axios.get("/bikes");
