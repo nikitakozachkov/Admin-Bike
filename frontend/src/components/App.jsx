@@ -1,4 +1,3 @@
-import { Toaster } from "react-hot-toast";
 import { Header } from "./Header/Header";
 import { Footer } from "./Footer/Footer";
 import { Statistics } from "./Statistics/Statistics";
@@ -23,8 +22,6 @@ export const App = () => {
       </div>
 
       <Footer />
-
-      <Toaster />
     </>
   );
 };

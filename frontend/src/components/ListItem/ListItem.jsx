@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import toast from "react-hot-toast";
 import { updateBikeStatus, deleteBike } from "redux/bikes/actions";
 import cross from "img/icons/cross.svg";
 import styles from "./ListItem.module.css";
@@ -13,7 +12,6 @@ export const ListItem = ({ id, name, type, color, bikeId, status, price }) => {
 
   const handleClick = () => {
     dispatch(deleteBike(id));
-    toast.success("Successfully deleted");
   };
 
   const itemClass = () => {

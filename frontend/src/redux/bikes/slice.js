@@ -8,6 +8,9 @@ const bikesSlice = createSlice({
     [getBikes.fulfilled](state, action) {
       state.items = action.payload;
     },
+    [addBike.pending](state) {
+      state.error = null;
+    },
     [addBike.fulfilled](state, action) {
       state.items.push(action.payload);
     },
