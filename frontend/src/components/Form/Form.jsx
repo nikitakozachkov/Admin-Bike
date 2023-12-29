@@ -1,59 +1,15 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as zod from "zod";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
 import { addBike } from "redux/bikes/actions";
+import { getAll } from "redux/bikes/selectors";
+import { validationSchema } from "schemas/formValidationSchema";
 import styles from "./Form.module.css";
-
-const validationSchema = zod
-  .object({
-    name: zod
-      .string({
-        required_error: "Name is required",
-        invalid_type_error: "Name must be a string",
-      })
-      .min(5, { message: "Field must contain at least 5 characters." })
-      .trim(),
-    type: zod
-      .string({
-        required_error: "Type is required",
-        invalid_type_error: "Type must be a string",
-      })
-      .min(5, { message: "Field must contain at least 5 characters." })
-      .trim(),
-    color: zod
-      .string({
-        required_error: "Color is required",
-        invalid_type_error: "Color must be a string",
-      })
-      .min(5, { message: "Field must contain at least 5 characters." }),
-    wheelSize: zod.number({
-      required_error: "Wheel size is required",
-      invalid_type_error: "Wheel size must be a number",
-    }),
-    price: zod.number({
-      required_error: "Price is required",
-      invalid_type_error: "Price must be a number",
-    }),
-    id: zod
-      .string({
-        required_error: "ID is required",
-        invalid_type_error: "ID must be a string",
-      })
-      .min(5, { message: "Field must contain at least 5 characters." })
-      .trim(),
-    description: zod
-      .string({
-        required_error: "Description is required",
-        invalid_type_error: "Description must be a string",
-      })
-      .min(5, { message: "Field must contain at least 5 characters." })
-      .trim(),
-  })
-  .required();
 
 export const Form = () => {
   const dispatch = useDispatch();
+  const bikes = useSelector(getAll);
   const {
     register,
     handleSubmit,
@@ -67,8 +23,14 @@ export const Form = () => {
     <form
       className={styles.container}
       onSubmit={handleSubmit((data) => {
-        dispatch(addBike(data));
-        reset();
+        const filtered = bikes.find(({ id }) => id.toLowerCase() === data.id.toLowerCase());
+
+        if (!filtered) {
+          dispatch(addBike(data));
+          reset();
+        } else {
+          toast.error("Bike with the same ID already exists");
+        }
       })}
     >
       <ul className={styles.list}>
@@ -78,7 +40,6 @@ export const Form = () => {
             placeholder="Name"
             type="text"
             className={styles.input}
-            minLength={5}
           />
 
           {errors && <p>{errors.name?.message}</p>}
@@ -90,7 +51,6 @@ export const Form = () => {
             placeholder="Type"
             type="text"
             className={styles.input}
-            minLength={5}
           />
 
           {errors && <p>{errors.type?.message}</p>}
@@ -102,7 +62,6 @@ export const Form = () => {
             placeholder="Color"
             type="text"
             className={styles.input}
-            minLength={5}
           />
 
           {errors && <p>{errors.color?.message}</p>}
@@ -136,7 +95,6 @@ export const Form = () => {
             placeholder="ID (slug): ХХХХХХХХХХХХХ"
             type="text"
             className={styles.input}
-            minLength={5}
           />
 
           {errors && <p>{errors.id?.message}</p>}
@@ -147,7 +105,6 @@ export const Form = () => {
             {...register("description")}
             placeholder="Description"
             className={styles.textarea}
-            minLength={5}
           />
 
           {errors && <p>{errors.description?.message}</p>}

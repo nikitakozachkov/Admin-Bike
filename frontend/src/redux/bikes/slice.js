@@ -12,7 +12,7 @@ const bikesSlice = createSlice({
       state.error = null;
     },
     [addBike.fulfilled](state, action) {
-      state.items.push(action.payload);
+      state.items.push(action.payload)
     },
     [deleteBike.fulfilled](state, action) {
       state.items = state.items.filter(({ _id }) => _id !== action.payload._id);

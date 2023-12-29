@@ -97,6 +97,7 @@ textarea {
   .main {
     order: 2;
     width: 100%;
+    padding: 9px;
     border: 0;
   }
 

@@ -1,5 +1,5 @@
 .container {
-  padding: 10px 21.55px 16px 0px;
+  padding: 10px 21.55px 16px 0;
 }
 
 .title {
@@ -19,4 +19,10 @@
 
 .list li span {
   font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 10px 10px 16px 0;
+  }
 }
