@@ -9,3 +9,9 @@
   text-transform: uppercase;
   color: #FFFFFF;
 }
+
+@media screen and (max-width: 767px) {
+  .container {
+    font-size: 18px;
+  }
+}

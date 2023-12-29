@@ -9,24 +9,6 @@ body {
   height: 100%;
 }
 
-/* 
-  bg-primary: #696969;
-  bg-secondary: #E8E8E8;
-
-  logo: #E8E8E8;
-  footer: #CBCACA;
-
-  text: #000000;
-  text-primary: #333333;
-  text-secondary: #717171;
-
-  aviable: #6FCF97;
-  unaviable: #EB5757;
-  busy: #F2994A;
-
-  unaviable list items have 50% opacity
-*/
-
 body {
   margin: 0;
   background-color: #ffffff;
@@ -65,6 +47,7 @@ input {
 input,
 select {
   font-family: inherit;
+  font-size: inherit;
 }
 
 input,
@@ -100,4 +83,25 @@ textarea {
 .sidebar {
   width: 40%;
   padding-left: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    font-size: 12px;
+  }
+
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .main {
+    order: 2;
+    width: 100%;
+    border: 0;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-bottom: 1px solid #c4c4c4;
+  }
 }

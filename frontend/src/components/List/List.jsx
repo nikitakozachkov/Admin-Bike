@@ -1,47 +1,39 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getBikes } from "redux/bikes/actions";
+import { getAll } from "redux/bikes/selectors";
 import { ListItem } from "components/ListItem/ListItem";
 import styles from "./List.module.css";
 
-const bikes = [
-  {
-    name: "awas",
-    type: "type",
-    color: "color",
-    id: "id",
-    bikeStatus: "Available",
-    price: "00.00",
-  },
-  {
-    name: "wasd",
-    type: "type",
-    color: "color",
-    id: "wasd",
-    bikeStatus: "Unavailable",
-    price: "00.00",
-  },
-  {
-    name: "bax",
-    type: "type",
-    color: "color",
-    id: "bax",
-    bikeStatus: "Busy",
-    price: "00.00",
-  },
-];
-
 export const List = () => {
+  const dispatch = useDispatch();
+
+  const bikes = useSelector(getAll);
+
+  useEffect(() => {
+    dispatch(getBikes());
+  }, [dispatch]);
+
   return (
-    <ul className={styles.list}>
-      {bikes.map(({ name, type, color, id, bikeStatus, price }) => (
-        <ListItem
-          key={id}
-          name={name}
-          type={type}
-          color={color}
-          id={id}
-          bikeStatus={bikeStatus}
-          price={price}
-        />
-      ))}
-    </ul>
+    <>
+      {bikes.length > 0 ? (
+        <ul className={styles.list}>
+          {bikes.map(({ _id, name, type, color, id, status, price }) => (
+            <ListItem
+              key={_id}
+              name={name}
+              type={type}
+              color={color}
+              id={_id}
+              bikeId={id}
+              status={status}
+              price={price}
+            />
+          ))}
+        </ul>
+      ) : (
+        <p className={styles.placeholder}>No bikes yet</p>
+      )}
+    </>
   );
 };

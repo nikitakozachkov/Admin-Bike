@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateBikeStatus, deleteBike } from "redux/bikes/actions";
 import cross from "img/icons/cross.svg";
 import styles from "./ListItem.module.css";
 
-export const ListItem = ({ name, type, color, id, bikeStatus, price }) => {
-  const [status, setStatus] = useState(bikeStatus);
+export const ListItem = ({ id, name, type, color, bikeId, status, price }) => {
+  const dispatch = useDispatch();
+
+  const handleChange = (event) => {
+    dispatch(updateBikeStatus({ id, status: event.currentTarget.value }));
+  };
+
+  const handleClick = () => {
+    dispatch(deleteBike(id));
+  };
 
   const itemClass = () => {
     switch (status) {
@@ -23,11 +32,11 @@ export const ListItem = ({ name, type, color, id, bikeStatus, price }) => {
           <span>{name}</span> - {type} ({color})
         </p>
 
-        <p className={styles["item-id"]}>Id: {id}</p>
+        <p className={styles["item-id"]}>Id: {bikeId}</p>
 
         <label className={styles["item-status"]}>
           Status:
-          <select name="status">
+          <select name="status" onChange={handleChange}>
             <option value="Available" selected={status === "Available"}>
               Available
             </option>
@@ -44,7 +53,11 @@ export const ListItem = ({ name, type, color, id, bikeStatus, price }) => {
       </div>
 
       <div>
-        <button type="button" className={styles["item-button"]}>
+        <button
+          type="button"
+          className={styles["item-button"]}
+          onClick={handleClick}
+        >
           <img src={cross} alt="cross-icon" />
         </button>
 

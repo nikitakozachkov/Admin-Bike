@@ -1,6 +1,9 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
+import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+import { addBike } from "redux/bikes/actions";
 import styles from "./Form.module.css";
 
 const validationSchema = zod
@@ -51,6 +54,7 @@ const validationSchema = zod
   .required();
 
 export const Form = () => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -64,8 +68,9 @@ export const Form = () => {
     <form
       className={styles.container}
       onSubmit={handleSubmit((data) => {
-        console.log(data);
-        
+        dispatch(addBike(data));
+        toast.success("Successfully saved");
+
         reset();
       })}
     >
