@@ -7,11 +7,11 @@
   background-color: #e8e8e8;
 }
 
-.item.unavailable {
+.item.busy {
   border: 2px solid #f2994a;
 }
 
-.item.busy {
+.item.unavailable {
   border: 2px solid rgba(235, 87, 87, 0.5);
 }
 
@@ -27,7 +27,7 @@
   align-items: end;
 }
 
-.item.busy div:last-child {
+.item.unavailable div:last-child {
   opacity: 50%;
 }
 
@@ -35,7 +35,7 @@
   margin-bottom: 6px;
 }
 
-.item.busy .item-name {
+.item.unavailable .item-name {
   opacity: 50%;
 }
 
@@ -50,7 +50,7 @@
   color: #717171;
 }
 
-.item.busy .item-id {
+.item.unavailable .item-id {
   opacity: 50%;
 }
 
