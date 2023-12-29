@@ -28,6 +28,10 @@ const add = async (req, res) => {
 const deleteById = async (req, res) => {
   const { id } = req.params;
 
+  if (id === "null" || id === "undefined") {
+    throw httpError(400, "Bad request");
+  }
+
   const result = await Bike.findByIdAndDelete(id);
 
   if (!result) {
